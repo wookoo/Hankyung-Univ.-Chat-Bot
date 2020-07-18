@@ -1,9 +1,11 @@
 import requests
 import json
 from urllib import parse
-#from django.http import JsonResponse
+from django.http import JsonResponse
 def Search(bookName):
     url = 'https://lib.hknu.ac.kr/pyxis-api/1/collections/1/search?all=k%7Ca%7C'+parse.quote(bookName)+'&abc='
+
+
     d = requests.get(url)
     response = json.loads(d.text)
     try:
@@ -22,15 +24,7 @@ def Search(bookName):
                     "title": "%s에 대한 검색 결과"%bookName,
                     "linkUrl": {
                       "type": "OS",
-                        "webUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "moUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "pcUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "pcCustomScheme": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "macCustomScheme": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "iosUrl": "melonios://",
-                        "iosStoreUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "androidUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "androidStoreUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264"
+                        "webUrl": 'https://lib.hknu.ac.kr/#/search/si?all=1%7Ck%7Ca%7C'+parse.quote(bookName)+'&mashup=PYXIS',
                     }
                 },
                 {
@@ -41,14 +35,7 @@ def Search(bookName):
                     "linkUrl": {
                       "type": "OS",
                         "webUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "moUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "pcUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "pcCustomScheme": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "macCustomScheme": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "iosUrl": "melonios://",
-                        "iosStoreUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "androidUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "androidStoreUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264"
+
                     }
                 },
                 {
@@ -105,14 +92,7 @@ def Search(bookName):
                   "data":
                     {
                        "webUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "moUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "pcUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "pcCustomScheme": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "macCustomScheme": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "iosUrl": "melonios://",
-                        "iosStoreUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "androidUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264",
-                        "androidStoreUrl": "http://www.melon.com/artist/timeline.htm?artistId=729264"
+                    
                     }
 
                 }
@@ -123,9 +103,9 @@ def Search(bookName):
       ],
 
     }
-        #return JsonResponse(result)
+        return JsonResponse(result)
     except:
-        pass
-        #return JsonResponse(result)
+        #pass
+        return JsonResponse(result)
 
-Search("고기")
+#Search("고기")
