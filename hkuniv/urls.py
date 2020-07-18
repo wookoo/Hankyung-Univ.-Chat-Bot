@@ -17,5 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from bot import views
 urlpatterns = [
-    path('message/',views.message)
+    path('message/',views.message),
+    path("check/<str:value>/",views.check)
 ]
