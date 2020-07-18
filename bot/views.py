@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from bot import library
 from bot import button
+from bot import restaurant
 import json
 import re
 
@@ -23,21 +24,8 @@ def message(request):
 
 
     elif command == "오늘의학식":
-        restaurant = return_json_str['action']['params']['restaurant']
-        print(restaurant)
-        return JsonResponse({
-    "version": "2.0",
-    "template": {
-        "outputs": [
-            {
-                "simpleText": {
-                    "text": "오늘의학식은.."
-                }
-            }
-        ],
-        'quickReplies':button.simpleTextquickReplies,
-    },
-    })
+        res = return_json_str['action']['params']['restaurant']
+        return restaurant.Search(res)
 
 
 
