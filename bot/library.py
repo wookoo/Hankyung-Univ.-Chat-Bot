@@ -62,7 +62,7 @@ def Search(bookName):
               "buttons": [
                 {
                   "type": "link",
-                  "label": "검색결과 %d개 모두보기"%total,
+                  "label": "검색결과 %d개 보기"%total,
                   "data":
                     {
                     "type": "OS",
