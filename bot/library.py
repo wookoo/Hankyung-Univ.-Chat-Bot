@@ -2,6 +2,7 @@ import requests
 import json
 from urllib import parse
 from django.http import JsonResponse
+from bot import button
 
 def Search(bookName):
     url = 'https://lib.hknu.ac.kr/pyxis-api/1/collections/1/search?all=k%7Ca%7C'+parse.quote(bookName)+'&abc='
@@ -82,8 +83,10 @@ def Search(bookName):
           ]
         }
       ],
+      'quickReplies': button.quickReplies,
 
     }
+
         return JsonResponse(result)
     except:
         return JsonResponse({
@@ -92,9 +95,11 @@ def Search(bookName):
         "outputs": [
             {
                 "simpleText": {
-                    "text": bookName + "에 대한 검색 결과가 없습니다."
+                    "text": bookName + "에 대한 검색 결과가 없어요."
                 }
             }
-        ]
+        ],
+        'quickReplies' : button.simpleTextquickReplies,
     }
+
 })
